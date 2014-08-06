@@ -62,17 +62,32 @@ $(document).ready(function(){
         </ul>
       </div>
     </div>
-  <div data-role="content">
-		目前狀態與建議:
-		<div data-role="content">
-			孕前BMI:22.04&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;狀態:理想
-		</div>
-		<div data-role="content">
-			孕期建議增加重量:11.5~16kg
-		</div>
-		<div data-role="content">
-			每日建議攝取熱量:約1800大卡
-		</div>
+	<div data-role="content">
+		<ul data-role="listview">
+			<li data-role="list-divider">狀態:</li>
+				<p>
+					孕前BMI:22.04&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;狀態:理想
+				</p>
+				<p>
+					孕期建議增加重量：11.5~16kg
+				</p>
+				<p>
+					當前階段：第一妊娠期 建議增加0~0.2kg/周
+				</p>
+				<p>
+					每日建議攝取熱量：約1800大卡
+				</p>
+			<li data-role="list-divider">建議體重趨勢圖：</li>
+				<div id="chart1" style="height:200px; width:device-width;"></div>
+				<p>
+					第一妊娠期(3~12周) 建議增加0~2kg
+				</p>
+				<p>
+					第二妊娠期(12~24) 建議增加約5kg
+				</p>
+				<p>
+					第三妊娠期(24~40) 建議增加約5kg
+				</p>
 	</div>
   </div>
 </body>
