@@ -27,7 +27,7 @@
         </div>
 		<div data-role="fieldcontain">
 			<label for="date">懷孕時間:</label>
-			 <input type = "date" name = "OrderDate" value = ""   /> 
+			 <input type = "date" name = "pregnancy_date" value = ""   /> 
         </div>
 		<div data-role="fieldcontain">
 			<label for="height">身&nbsp;&nbsp;高:</label>
@@ -36,22 +36,22 @@
 		
 		<div data-role="fieldcontain">
 			<label for="origin_weight">孕前體重:</label>
-			<input type="number" name="origin_weight" value="" placeholder="請輸入懷孕前或初期體重"   data-mini="true" />
+			<input type="number" name="begin_weight" value="" placeholder="請輸入懷孕前或初期體重"   data-mini="true" />
 		</div>
 		
 		<div data-role="fieldcontain">
 			<label for="weight">目前體重:</label>
-			<input type="number" name="weight" value="" placeholder="請輸入現在的體重"   data-mini="true" />
+			<input type="number" name="current_weight" value="" placeholder="請輸入現在的體重"   data-mini="true" />
 		</div>
 		
 		<div data-role="fieldcontain">
 			<fieldset data-role="controlgroup" data-type="horizontal">
 				<legend>胎兒數:</legend>
-				<input type="radio" name="babyNum" id="single" value="1">   
+				<input type="radio" name="fetal_num" id="single" value="1">   
 				<label for="single" >單胞胎 </label>
-				<input type="radio" name="babyNum" id="twin" value="2">   
+				<input type="radio" name="fetal_num" id="twin" value="2">   
 				<label for="twin" >雙胞胎 </label>
-				<input type="radio" name="babyNum" id="multiple" value="3">   
+				<input type="radio" name="fetal_num" id="multiple" value="3">   
 				<label for="multiple" >多胞胎 </label>
 				</fieldset>
 		</div>
@@ -64,7 +64,7 @@
 			<input type="password" name="pw" value=""  data-mini="true" />
 		</div>
 		<div data-role="content" data-type="horizontal" align="right">
-			<input type="submit" data-inline="true" value='提交' onclick ="location.href='analysis.php'">
+			<input type="submit" data-inline="true" value='提交' >
 			<input type="reset" data-inline="true" value='重新輸入'>
 			
 			

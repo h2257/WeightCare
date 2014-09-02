@@ -1,4 +1,6 @@
-﻿<?php session_start(); ?>
+﻿<?php session_start(); 
+include("db_conn.php");
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +17,6 @@
 <?php
 //連接資料庫
 //只要此頁面上有用到連接MySQL就要include它
-include("db_conn.php");
 @$id = $_POST['id'];
 @$pw = $_POST['pw'];
 
