@@ -11,17 +11,36 @@
     <script src="http://www.jqplot.com/deploy/dist/jquery.min.js"></script>
     <script src="http://www.jqplot.com/deploy/dist/jquery.jqplot.min.js"></script>
     <link class="include" rel="stylesheet" type="text/css" href="http://www.jqplot.com/deploy/dist/jquery.jqplot.min.css" />
-    <script class="include" type="text/javascript" src="http://www.jqplot.com/deploy/dist/plugins/jqplot.dateAxisRenderer.min.js"></script>
+    <script class="include" type="text/javascript" src="js/jqplot/plugins/jqplot.dateAxisRenderer.min.js"></script>
     <script class="include" type="text/javascript" src="http://www.jqplot.com/deploy/dist/plugins/jqplot.canvasTextRenderer.min.js"></script>
     <script class="include" type="text/javascript" src="http://www.jqplot.com/deploy/dist/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
     <script class="include" type="text/javascript" src="http://www.jqplot.com/deploy/dist/plugins/jqplot.cursor.min.js"></script>
     <script type="text/javascript">
 $(document).ready(function(){
-  var line1=[['2014/06/01',52], ['2014/07/01',53], ['2014/08/01',54], ['2014/09/01',55],['2014/10/01',56],['2014/11/01',57],['2014/012/01',58],['2015/01/01',59],['2015/02/01',60],['2015/03/01',62]];
-  var line2=[['2014/06/01',54], ['2014/07/01',52], ['2014/08/01',53], ['2014/09/01',55],['2014/10/01',56],['2014/11/01',56.5],['2014/012/01',57],['2015/01/01',58],['2015/02/01',59.5],['2015/03/01',60]];
+  var line1=[['2014/06/01',52], ['2014/07/01',53], ['2014/08/01',55], ['2014/09/01',56],['2014/10/01',56.5],['2014/11/01',57],['2014/012/01',58],['2015/01/01',59],['2015/02/01',60],['2015/03/01',62]];
+  var line2=[['2014/06/01',56], ['2014/07/01',51], ['2014/08/01',52], ['2014/09/01',53],['2014/10/01',52.5],['2014/11/01',53.5],['2014/012/01',57],['2015/01/01',58],['2015/02/01',59.5],['2015/03/01',60]];
   var plot1 = $.jqplot('chart1', [line1,line2], {
       title:'孕婦體重成長曲線圖', 
       gridPadding:{right:35},
+        axesDefaults: {
+            pad: 1.05
+        },
+
+
+      fillBetween:{
+        series1: 0,
+        series2: 1,
+        color: "rgba(232, 44, 12, 0.5)",
+        baseSeries: 0,
+        fill:true
+      },
+
+      seriesDefaults:{
+        rendererOptions: {
+                smooth: true
+        }
+      },
+
       axes:{
         xaxis:{
           label:"日期",
@@ -36,8 +55,8 @@ $(document).ready(function(){
       },
       cursor:{ 
         zoom:true
-      } 
-        });
+      },
+  });
 });
 
 </script>

@@ -1,4 +1,7 @@
-!DOCTYPE html>
+<!DOCTYPE html>
+<?php 
+include("data.php");
+?>
 <html>
 <head>
 <title>MummyCare</title>
@@ -49,7 +52,8 @@ $(document).ready(function(){
 	<div data-role="content">
 		體重管理評估:
 		<div data-role="content">
-			孕前BMI:22.04&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;狀態:理想
+			孕前BMI: <?php echo $bmi ; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			體重:<?php echo bmi_state( $bmi ) ;?>
 		</div>
 		<div data-role="content">
 			孕期建議增加重量:11.5~16kg
@@ -58,10 +62,9 @@ $(document).ready(function(){
 			每日建議攝取熱量:約1800大卡
 		</div>
 	</div>
-	<div data-role="content">
-		理想增重趨勢圖:
-		<div id="chart1" style="height:200px; width:500px;"></div>
-	</div>
+	<div data-role="content">理想增重趨勢圖:</div>
+		<div id="chart1" style="height:200px; width:device-width;"></div>  
+	
 
     <div data-role="content" data-type="horizontal" align="right">
 		<a href='main.php' data-role="button" data-inline="true">ok</a>

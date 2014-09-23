@@ -1,3 +1,6 @@
+<?php 
+include("data.php");
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,13 +42,14 @@ $(document).ready(function(){
 
 </script>
 </head>
+
 <body>
   <div data-role="page" id="main">
     <div data-role="header" data-position="fixed">
       <div data-role="navbar" data-iconpos="top">
         <ul>
           <li>
-            <a href="#" data-icon="home"class="ui-btn-active">主頁面</a>
+            <a href="main.php" data-icon="home"class="ui-btn-active">主頁面</a>
           </li>
 
           <li data role="page" id="colories">
@@ -64,30 +68,26 @@ $(document).ready(function(){
     </div>
 	<div data-role="content">
 		<ul data-role="listview">
-			<li data-role="list-divider">狀態:</li>
+			<li data-role="list-divider">狀態:<?php ; ?></li> <!--綜合狀態 -->
 				<p>
-					孕前BMI:22.04&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;狀態:理想
+					目前體重:&nbsp;&nbsp;<?php echo $row[6] ;?>kg
 				</p>
 				<p>
-					孕期建議增加重量：11.5~16kg
+					孕期建議增加重量：<?php echo total_increase($bmi) ;?>kg
 				</p>
 				<p>
-					當前階段：第一妊娠期 建議增加0~0.2kg/周
+					當前階段：第<?php echo stage($preg_date)  ;?>妊娠期 
+				</p>
+				<p>
+					建議增加重量：<?php echo stage_increase($bmi,$preg_date) ;?>
 				</p>
 				<p>
 					每日建議攝取熱量：約1800大卡
 				</p>
 			<li data-role="list-divider">建議體重趨勢圖：</li>
 				<div id="chart1" style="height:200px; width:device-width;"></div>
-				<p>
-					第一妊娠期(3~12周) 建議增加0~2kg
-				</p>
-				<p>
-					第二妊娠期(12~24) 建議增加約5kg
-				</p>
-				<p>
-					第三妊娠期(24~40) 建議增加約5kg
-				</p>
+				
+				
 	</div>
   </div>
 </body>

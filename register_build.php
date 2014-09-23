@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php session_start(); ?>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <?php
@@ -21,13 +20,12 @@ $sql_add = "INSERT INTO mommy(`id`, `pw`, `name`, `age`, `pregnancy_date`, `heig
 			'$id', '$pw', '$name', '$age', '$pregnancy_date', '$height', '$begin_weight', '$current_weight', '$fetal_num' )";
 if(mysql_query($sql_add))
         {
-                echo '新增成功!';
-                echo '<meta http-equiv=REFRESH CONTENT=2;url=analysis.php>';
+				$_SESSION['ID'] = $id;
+                header("Location:analysis.php" );
         }
-        else
+else
         {
-                echo '新增失敗!';
-                echo '<meta http-equiv=REFRESH CONTENT=2;url=login.php>';
+                header("Location:login.php");
         }
 
 
