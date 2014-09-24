@@ -11,8 +11,7 @@ if($_SESSION['ID']!=null){
 	
 	$bmi =  round($row[6]*10000/$row[5]/$row[5],2);
 	$preg_date=explode("-",$row[4]);
-	$stage23_increase=0;
-	
+	$kg = $row[6];
 	//bmi狀態
 	function bmi_state( $b ){
 		if($b<18.5){
@@ -33,10 +32,10 @@ if($_SESSION['ID']!=null){
 		if($row[8]>=3){
 			return "22.7"; 
 		}
-		else if($row[8]=2){
+		else if($row[8]==2){
 			return "15.9~20.4"; 
 		}
-		else if($row[8]=1){
+		else{
 			if($b<19.8){
 				return "12.5~18";
 			}
@@ -51,9 +50,42 @@ if($_SESSION['ID']!=null){
 			}
 		}
 	}
-	//一日所需熱量
-	function carolie(){
-		
+	//一日所需熱量基礎單位
+	function basic($b){
+		if($b<18.5){
+			if($row[9]==1){
+				$w = 35;
+			}
+			elseif($row[9]==2){
+				$w = 40;
+			}
+			else{
+				$w = 45;
+			}
+		}
+		else if($b>=18.5 && $b<24){
+			if($row[9]==1){
+				$w = 30;
+			}
+			elseif($row[9]==2){
+				$w = 35;
+			}
+			else{
+				$w = 40;
+			}
+		}
+		else{
+			if($row[9]==1){
+				$w = 25;
+			}
+			elseif($row[9]==2){
+				$w = 30;
+			}
+			else{
+				$w = 35;
+			}	
+		}
+		return $w;
 	}
 	//孕期階段
 	function stage($p){
@@ -71,40 +103,33 @@ if($_SESSION['ID']!=null){
 		
 	}
 	//12周後,分期增加體重/周
-	function stage_increase($b,$a){
-		if(stage($a)=1){
+	function stage_increase($b,$p){
+		if(stage($p)==1){
 			return "0~0.2";
 		}
 		else {
 			if($row[8]>=3){
 				return "0.8";
-				$stage23_increase ="0.8";
 			}
-			else if($row[8]=2){
+			else if($row[8]==2){
 				return "0.5~0.7"; 
-				$stage23_increase ="0.5~0.7";
 			}
 			else {
 				if($b<19.8){
 					return "0.5";
-					$stage23_increase ="0.5";
 				}
 				else if($b>=19.8 && $b<26.0){
 					return "0.4";
-					$stage23_increase ="0.4";
 				}
 				else if($b>=26.0 && $b<29.0){
 					return "0.3";
-					$stage23_increase ="0.3";
 				}
 				else if($b>=29.0){
 					return "0.2";
-					$stage23_increase ="0.2";
 				}
 			}
 		}
 	}
-	
 	
 	
 	//綜合身體狀況

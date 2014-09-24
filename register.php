@@ -43,6 +43,17 @@
 			<label for="weight">目前體重:</label>
 			<input type="number" name="current_weight" value="" placeholder="請輸入現在的體重"   data-mini="true" />
 		</div>
+		<div data-role="fieldcontain">
+			<fieldset data-role="controlgroup" data-type="horizontal">
+				<legend>每日活動量:</legend>
+				<input type="radio" name="activity" id="light" value="1">   
+				<label for="single" >輕度 </label>
+				<input type="radio" name="activity" id="middle" value="2">   
+				<label for="twin" >中度 </label>
+				<input type="radio" name="activity" id="severe" value="3">   
+				<label for="multiple" >重度 </label>
+				</fieldset>
+		</div>
 		
 		<div data-role="fieldcontain">
 			<fieldset data-role="controlgroup" data-type="horizontal">

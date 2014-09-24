@@ -56,10 +56,10 @@ $(document).ready(function(){
 			體重:<?php echo bmi_state( $bmi ) ;?>
 		</div>
 		<div data-role="content">
-			孕期建議增加重量:11.5~16kg
+			孕期建議增加重量:<?php echo total_increase($bmi) ;?>kg
 		</div>
 		<div data-role="content">
-			每日建議攝取熱量:約1800大卡
+			每日建議攝取熱量:約<?php echo $row[6]*basic($bmi) ;?>大卡
 		</div>
 	</div>
 	<div data-role="content">理想增重趨勢圖:</div>

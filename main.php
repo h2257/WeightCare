@@ -79,13 +79,22 @@ $(document).ready(function(){
 					當前階段：第<?php echo stage($preg_date)  ;?>妊娠期 
 				</p>
 				<p>
-					建議增加重量：<?php echo stage_increase($bmi,$preg_date) ;?>
+					建議增加重量：約<?php echo stage_increase($bmi,$preg_date) ;?>kg/周 
 				</p>
 				<p>
-					每日建議攝取熱量：約1800大卡
+					每日建議攝取熱量：約<?php echo $row[6]*basic($bmi) ;?>大卡
 				</p>
 			<li data-role="list-divider">建議體重趨勢圖：</li>
 				<div id="chart1" style="height:200px; width:device-width;"></div>
+				<p>
+					第1妊娠期(3~12週)：+0~0.2kg/周
+				</p>
+				<p>
+					第2妊娠期(12~24週)：+<?php echo stage_increase($bmi,0)?>kg/周
+				</p>
+				<p>
+					第3妊娠期(24~40週)：+<?php echo stage_increase($bmi,0) ?>kg/周 
+				</p>
 				
 				
 	</div>

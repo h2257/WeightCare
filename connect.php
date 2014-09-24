@@ -23,7 +23,7 @@ include("db_conn.php");
 //搜尋資料庫資料
 $sql = "SELECT * FROM user where id = '$id'";
 $result = mysql_query($sql);
-$row = @mysql_fetch_row($result);
+$row = mysql_fetch_row($result);
 //判斷帳號與密碼是否為空白
 //以及MySQL資料庫裡是否有這個會員
 if($id != null && $pw != null && $row[0] == $id && $row[1] == $pw)
