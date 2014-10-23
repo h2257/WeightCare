@@ -11,7 +11,24 @@ if($_SESSION['ID']!=null){
 	
 	$bmi =  round($row[6]*10000/$row[5]/$row[5],2);
 	$preg_date=explode("-",$row[4]);
+	$date=str_replace('"',"'",$preg_date);
+//	$addedDays = 5;
+//	$temp_date=date('Y-m-d', strtotime($date. " + {$addedDays} days"));
 	$kg = $row[6];
+//	$date=date('Y-m-d',$preg_date);
+//	$enddate = date('Y-m-d',strtotime("$pregnancy_date + 1 month"));
+
+//	for($i=0;$i<=20;i++){
+//		if ($bmi<18.5){
+//		$date=date_create('$preg_date')
+
+//			$kg=$kg+0.4*$i;
+//		}
+//	}
+	//bmi狀態
+	  $sql_add_bmi = "UPDATE mommy SET bmi = '$bmi' WHERE id = '$id';" ;
+      mysql_query($sql_add_bmi);
+	
 	//bmi狀態
 	function bmi_state( $b ){
 		if($b<18.5){
@@ -27,6 +44,7 @@ if($_SESSION['ID']!=null){
 			return "肥胖";
 		}
 	}
+	
 	//總增加體重
 	function total_increase($b){
 		if($row[8]>=3){
@@ -50,13 +68,14 @@ if($_SESSION['ID']!=null){
 			}
 		}
 	}
+	
 	//一日所需熱量基礎單位
-	function basic($b){
+	function basic($b,$a){
 		if($b<18.5){
-			if($row[9]==1){
+			if($a==1){
 				$w = 35;
 			}
-			elseif($row[9]==2){
+			elseif($a==2){
 				$w = 40;
 			}
 			else{
@@ -64,10 +83,10 @@ if($_SESSION['ID']!=null){
 			}
 		}
 		else if($b>=18.5 && $b<24){
-			if($row[9]==1){
+			if($a==1){
 				$w = 30;
 			}
-			elseif($row[9]==2){
+			elseif($a==2){
 				$w = 35;
 			}
 			else{
@@ -75,10 +94,10 @@ if($_SESSION['ID']!=null){
 			}
 		}
 		else{
-			if($row[9]==1){
+			if($a==1){
 				$w = 25;
 			}
-			elseif($row[9]==2){
+			elseif($a==2){
 				$w = 30;
 			}
 			else{
@@ -87,6 +106,7 @@ if($_SESSION['ID']!=null){
 		}
 		return $w;
 	}
+	
 	//孕期階段
 	function stage($p){
 		$preg_time= mktime(0,0,0,$p[1],$p[2],$p[0]);
@@ -102,6 +122,7 @@ if($_SESSION['ID']!=null){
 			}
 		
 	}
+	
 	//12周後,分期增加體重/周
 	function stage_increase($b,$p){
 		if(stage($p)==1){
@@ -131,7 +152,31 @@ if($_SESSION['ID']!=null){
 		}
 	}
 	
+	$sql1 = "SELECT * FROM calorie WHERE category = '早餐' ;";
+	$result1 = mysql_query($sql1);
+	$breakfast = mysql_fetch_row($result1);
 	
-	//綜合身體狀況
+	$sql2 = "SELECT * FROM calorie WHERE category = '午餐' ;";
+	$result2 = mysql_query($sql2);
+	$lunch = mysql_fetch_row($result2);
+	
+	$sql3 = "SELECT * FROM calorie WHERE category = '晚餐' ;";
+	$result3 = mysql_query($sql3);
+	$dinner = mysql_fetch_row($result3);
+	
+	$sql4 = "SELECT * FROM calorie WHERE category = '水果' ;";
+	$result4 = mysql_query($sql4);
+	
+	$sql5 = "SELECT * FROM calorie WHERE category = '點心' ;";
+	$result5 = mysql_query($sql5);
+	$snack = mysql_fetch_row($result5);
+	
+	$sql6 = "SELECT * FROM calorie WHERE category = '消夜' ;";
+	$result6 = mysql_query($sql6);
+	$midnight = mysql_fetch_row($result6);
+	
+	$h_sql = "SELECT * FROM diet_history where id='$id';";
+	$h_result = mysql_query($h_sql);
+	
 }
 ?>
